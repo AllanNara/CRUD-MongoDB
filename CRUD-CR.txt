@@ -1,0 +1,34 @@
+///////////////////////////////////////////////
+// PARA EJECUTAR EN LA CONSOLA DE MONGOSHELL //
+///////////////////////////////////////////////
+
+// Creamos base de datos "colegio"
+use "colegio";
+
+// Creamos coleccion "estudiantes"
+db.createCollection("estudiantes");
+
+// Insertamos estudiantes
+db.estudiantes.insertMany([
+    {nombre: "Susana", apellido: "Horia", curso: "Desarrollo Web", edad: 23, correo: "susi@gmi.co", sexo: "F"},
+    {nombre: "Bob", apellido: "Patiño", curso: "IA", edad: 46, correo: "bob@gmi.co", sexo: "M"},
+    {nombre: "Esteban", apellido: "Quito", curso: "Programacion Backend", edad: 29, correo: "esti@gmi.co", sexo: "M"},
+    {nombre: "Juan", apellido: "Paco", curso: "React JS", edad: 18, correo: "pedro@gmi.co", sexo: "M"},
+    {nombre: "Maria", apellido: "La del Barrio", curso: "UX/UI", edad: 33, correo: "mari@gmi.co", sexo: "F"},
+]);
+
+// Insertamos estudiante con campos faltantes
+db.estudiantes.insertOne({nombre: "Pancho", apellido: "Vila", edad: 55})
+
+// Todos los estudiantes
+db.estudiantes.find({}).pretty();
+
+// Solo estudiantes hombres
+db.estudiantes.find({sexo: "M"}).pretty();
+
+// Realizamos conteo de documentos
+db.estudiantes.countDocuments({})
+
+// Realizamos conteo de documentos solo donde sexo sea femenino
+db.estudiantes.countDocuments({sexo: "F"})
+
